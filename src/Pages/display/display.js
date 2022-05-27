@@ -20,7 +20,7 @@ function Display() {
   return (
     <div>
       <div className="add-product__container">
-        <Link to="/" className="add-product__link">
+        <Link to="/add-product" className="add-product__link">
           <Button variant="contained">Add Product</Button>
         </Link>
         <div className="card-container">

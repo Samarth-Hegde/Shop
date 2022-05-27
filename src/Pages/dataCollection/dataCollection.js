@@ -26,8 +26,12 @@ function DataCollection() {
 
   const handleClick = async (e) => {
     const dataBaseRef = ref(fireBaseDataBase, "/Products");
-    await push(dataBaseRef, data);
-    nav("/display");
+    if (data.productMRP && data.productName) {
+      await push(dataBaseRef, data);
+      nav("/");
+    } else {
+      alert("Fill all the fields");
+    }
     console.log(data);
   };
 
@@ -61,7 +65,7 @@ function DataCollection() {
 
   return (
     <div className="data-container">
-      <Link className="link" to={"/display"}>
+      <Link className="link" to="/">
         <Button
           sx={{ backgroundColor: "#0362fc" }}
           variant="contained"

@@ -13,7 +13,7 @@ function CardComponent(props) {
           component="img"
           height="144"
           image={props.product.productImage}
-          alt="green iguana"
+          alt="Product Image"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">

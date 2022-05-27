@@ -23,7 +23,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Display />}></Route>
-          <Route path="/display" element={<DataCollection />}></Route>
+          <Route path="/add-product" element={<DataCollection />}></Route>
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
