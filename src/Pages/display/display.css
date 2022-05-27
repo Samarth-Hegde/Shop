@@ -2,12 +2,14 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   width: fit-content;
-  grid-gap: 75px;
+  grid-gap: 50px;
   margin: 20px auto;
   box-sizing: border-box;
 }
 
 .add-product__link {
+    display: flex;
+    justify-content: flex-end;
   text-decoration: none;
   margin: 40px;
 }

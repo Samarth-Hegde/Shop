@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Button, TextField } from "@mui/material";
+import { Button, TextField, Typography } from "@mui/material";
 import uploadImage from "../../assets/uploadImage.png";
-import "./dataCollection.css"
+import "./dataCollection.css";
 import { ref as sRef, uploadBytes, getDownloadURL } from "firebase/storage";
 import { ref, push } from "firebase/database";
-import { fireBaseStorage, fireBaseDataBase } from "../../fireBase/fireBseHandler";
+import {
+  fireBaseStorage,
+  fireBaseDataBase,
+} from "../../fireBase/fireBseHandler";
 
 function DataCollection() {
   const [data, setData] = useState({
@@ -12,7 +15,7 @@ function DataCollection() {
     productPrice: "",
     productMRP: "",
   });
-
+  const [upload, setUpload] = useState(false);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData({ ...data, [name]: value });
@@ -34,6 +37,7 @@ function DataCollection() {
         `/Products/${new Date().getTime()}`
       );
       await uploadBytes(storageRef, e.target.files[0]);
+      setUpload(true);
       const imageURl = await getDownloadURL(storageRef);
       setData({ ...data, productImage: imageURl });
     };
@@ -62,6 +66,9 @@ function DataCollection() {
         className="upload-img"
         onClick={handleImageClick}
       />
+      <Typography sx={{ textAlign: "center" }} variant="h5">
+        {upload ? "Image Uploaded" : "Upload the Product Image"}
+      </Typography>
       <TextField
         sx={{ width: "600px", marginBottom: "20px" }}
         name="productName"
@@ -84,13 +91,15 @@ function DataCollection() {
         label="Product MRP"
         variant="outlined"
       ></TextField>
-      <Button
-        sx={{ backgroundColor: "#0362fc" }}
-        variant="contained"
-        onClick={handleClick}
-      >
-        Add
-      </Button>
+      {upload && (
+        <Button
+          sx={{ backgroundColor: "#0362fc" }}
+          variant="contained"
+          onClick={handleClick}
+        >
+          Add
+        </Button>
+      )}
     </div>
   );
 }
