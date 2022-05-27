@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { Button } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
+import { ThemeProvider } from "@emotion/react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import DataCollection from "./Pages/dataCollection/dataCollection";
+import Display from "./Pages/display/display";
 
 function App() {
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: "#c203fc",
+      },
+      secondary: {
+        main: "#eb4034",
+      },
+    },
+  });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<DataCollection />}></Route>
+          <Route path="/display" element={<Display />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 

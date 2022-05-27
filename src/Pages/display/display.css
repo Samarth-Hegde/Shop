@@ -1,0 +1,17 @@
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  width: fit-content;
+  grid-gap: 75px;
+  margin: 20px auto;
+  box-sizing: border-box;
+}
+
+.add-product__link {
+  text-decoration: none;
+  margin: 40px;
+}
+
+.add-product__container {
+  margin-top: 50px;
+}
