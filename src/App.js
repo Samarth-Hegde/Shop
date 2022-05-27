@@ -22,8 +22,8 @@ function App() {
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<DataCollection />}></Route>
-          <Route path="/display" element={<Display />}></Route>
+          <Route path="/" element={<Display />}></Route>
+          <Route path="/display" element={<DataCollection />}></Route>
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

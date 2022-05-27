@@ -9,3 +9,12 @@
 img {
   cursor: pointer;
 }
+
+.link {
+  margin: 20px;
+  overflow-x: hidden;
+  text-decoration: none;
+  display: flex;
+  width: 80vw;
+  justify-content: flex-end;
+}

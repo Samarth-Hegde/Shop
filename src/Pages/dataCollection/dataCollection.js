@@ -8,6 +8,7 @@ import {
   fireBaseStorage,
   fireBaseDataBase,
 } from "../../fireBase/fireBseHandler";
+import { Link, useNavigate } from "react-router-dom";
 
 function DataCollection() {
   const [data, setData] = useState({
@@ -15,6 +16,7 @@ function DataCollection() {
     productPrice: "",
     productMRP: "",
   });
+  const nav = useNavigate();
   const [upload, setUpload] = useState(false);
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,6 +27,7 @@ function DataCollection() {
   const handleClick = async (e) => {
     const dataBaseRef = ref(fireBaseDataBase, "/Products");
     await push(dataBaseRef, data);
+    nav("/display");
     console.log(data);
   };
 
@@ -58,6 +61,15 @@ function DataCollection() {
 
   return (
     <div className="data-container">
+      <Link className="link" to={"/display"}>
+        <Button
+          sx={{ backgroundColor: "#0362fc" }}
+          variant="contained"
+          onClick={handleClick}
+        >
+          Go to products
+        </Button>
+      </Link>
       <img
         src={data.productImage ? data.productImage : uploadImage}
         alt="upload image"
